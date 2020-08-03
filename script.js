@@ -1,4 +1,4 @@
-// About Invisible Notification 
+// Deactivate Visible Notification 
 document.getElementById("notify-unmatched-pin").style.display = "none";
 document.getElementById("notify-matched-pin").style.display = "none";
 document.getElementById("action-remaining").style.display = "none";
@@ -34,6 +34,7 @@ function submitKey() {
     else {
     document.getElementById("notify-matched-pin").style.display = "none";
     document.getElementById("notify-unmatched-pin").style.display = "block";
+    tryLeft();
     }
 }
 
@@ -48,6 +49,26 @@ function deletePin() {
 // Activate Clear Key
 function clearPin() {
     document.getElementById("input-pin").value = "";
+}
+
+
+// Activate Action Remaining
+let count = 0;
+
+function tryLeft() {
+    let enteredPin = document.getElementById("input-pin").value;
+    let generatedPin = document.getElementById("generate-pin").value;
+    count++
+    if (count == 1 && enteredPin !== generatedPin) {
+        document.getElementById("action-remaining").style.display = "block"
+    } else if (count == 2 && enteredPin !== generatedPin) {
+        document.getElementById("action-remaining").innerText = "2 try left"
+    } else if (count == 3 && enteredPin !== generatedPin) {
+        document.getElementById("action-remaining").innerText = "1 try left"
+    } else if (count == 4 && enteredPin !== generatedPin) {
+        document.getElementById("action-remaining").innerText = "0 try left"
+        document.getElementById("submit-key").disabled = true;
+    }
 }
 
 
