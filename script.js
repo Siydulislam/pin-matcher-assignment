@@ -16,7 +16,7 @@ function numericalKey(num) {
 }
 
 
-// Activate the Submit Button
+// Activate the Submit Key
 function submitKey() {
     let generatedPin = document.getElementById("generate-pin").value;
     let enteredPin = document.getElementById("input-pin").value;
@@ -37,5 +37,17 @@ function submitKey() {
     }
 }
 
+
+// Activate Delete Key
+function deletePin() {
+    let inputValue = document.getElementById("input-pin").value;
+    document.getElementById("input-pin").value = inputValue.substring(0, inputValue.length - 1);
+}
+
+
+// Activate Clear Key
+function clearPin() {
+    document.getElementById("input-pin").value = "";
+}
 
 
